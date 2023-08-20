@@ -14,12 +14,13 @@
         const initialInvestment = 220.000000;
         const interestRatePerSecond = 0.000000317097917; // Equivalent to 10% annual interest
 
-        let investmentValue = initialInvestment;
+        let investmentValue = parseFloat(localStorage.getItem("investmentValue")) || initialInvestment;
         const resultElement = document.getElementById("result");
 
         function updateValue() {
             investmentValue *= (1 + interestRatePerSecond);
             resultElement.textContent = `Investment value: $${investmentValue.toFixed(6)}`;
+            localStorage.setItem("investmentValue", investmentValue);
         }
 
         // Update the investment value every second
