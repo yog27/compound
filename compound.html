@@ -1,37 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Compound Interest Calculator</title>
+    <title>Continuous Investment Growth</title>
 </head>
 <body>
-    <h1>Compound Interest Calculator</h1>
+    <h1>Continuous Investment Growth</h1>
     
     <p>Initial investment: $220</p>
-    <p>Annual interest rate: 10%</p>
     
     <p id="result"></p>
 
     <script>
-        function calculateCompoundInterest(principal, rate, time) {
-            rate = rate / 100;
-            const amount = principal * Math.pow(1 + rate, time);
-            return amount.toFixed(2);
-        }
+        const initialInvestment = 220;
+        const interestRatePerSecond = 0.000000317097917; // Equivalent to 10% annual interest
 
-        const initialPrincipal = 220;
-        const annualInterestRate = 10;
+        let investmentValue = initialInvestment;
         const resultElement = document.getElementById("result");
 
-        let years = 0;
-
-        function updateResult() {
-            const finalAmount = calculateCompoundInterest(initialPrincipal, annualInterestRate, years);
-            resultElement.textContent = `After ${years} years, the investment will grow to $${finalAmount}`;
-            years++;
+        function updateValue() {
+            investmentValue *= (1 + interestRatePerSecond);
+            resultElement.textContent = `Investment value: $${investmentValue.toFixed(2)}`;
         }
 
-        // Update the result every second
-        setInterval(updateResult, 1000);
+        // Update the investment value every second
+        setInterval(updateValue, 1000);
     </script>
 </body>
 </html>
+
