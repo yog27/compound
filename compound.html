@@ -1,35 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Compound Interest Visualizer</title>
+    <title>Compound Interest Calculator</title>
 </head>
 <body>
-  <h1>Compound Interest Visualizer</h1>
-  <label for="principal">Principal Amount:</label>
-  <input type="number" id="principal" value="1000">
-  <label for="rate">Interest Rate (%):</label>
-  <input type="number" id="rate" value="5">
-  <label for="time">Time (years):</label>
-  <input type="number" id="time" value="1">
-  <div id="result">Compound Interest: $0</div>
+    <h1>Compound Interest Calculator</h1>
+    
+    <p>Initial investment: $220</p>
+    <p>Annual interest rate: 10%</p>
+    <p>Number of years: 5</p>
+    
+    <p id="result"></p>
 
-  <script>
-    const principalInput = document.getElementById("principal");
-    const rateInput = document.getElementById("rate");
-    const timeInput = document.getElementById("time");
-    const resultDiv = document.getElementById("result");
+    <script>
+        function calculateCompoundInterest(principal, rate, time) {
+            rate = rate / 100;
+            const amount = principal * Math.pow(1 + rate, time);
+            return amount.toFixed(2);
+        }
 
-    function calculateCompoundInterest() {
-      const principal = parseFloat(principalInput.value);
-      const rate = parseFloat(rateInput.value) / 100;
-      const time = parseFloat(timeInput.value);
+        const initialPrincipal = 220;
+        const annualInterestRate = 10;
+        const years = 5;
 
-      const compoundAmount = principal * (1 + rate / 365) ** (365 * time);
-      const interest = compoundAmount - principal;
-      resultDiv.textContent = `Compound Interest: $${interest.toFixed(2)}`;
-    }
-
-    setInterval(calculateCompoundInterest, 1000);
-  </script>
+        const finalAmount = calculateCompoundInterest(initialPrincipal, annualInterestRate, years);
+        const resultElement = document.getElementById("result");
+        resultElement.textContent = `After ${years} years, the investment will grow to $${finalAmount}`;
+    </script>
 </body>
 </html>
