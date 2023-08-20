@@ -22,10 +22,18 @@
         const initialPrincipal = 220;
         const annualInterestRate = 10;
         const years = 5;
-
-        const finalAmount = calculateCompoundInterest(initialPrincipal, annualInterestRate, years);
         const resultElement = document.getElementById("result");
-        resultElement.textContent = `After ${years} years, the investment will grow to $${finalAmount}`;
+
+        function updateResult() {
+            const finalAmount = calculateCompoundInterest(initialPrincipal, annualInterestRate, years);
+            resultElement.textContent = `After ${years} years, the investment will grow to $${finalAmount}`;
+        }
+
+        // Initial update
+        updateResult();
+
+        // Update the result every second
+        setInterval(updateResult, 1000);
     </script>
 </body>
 </html>
