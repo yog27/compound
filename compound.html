@@ -6,12 +6,12 @@
 <body>
     <h1>Continuous Investment Growth</h1>
     
-    <p>Initial investment: $220</p>
+    <p>Initial investment: $220.000000</p>
     
     <p id="result"></p>
 
     <script>
-        const initialInvestment = 220;
+        const initialInvestment = 220.000000;
         const interestRatePerSecond = 0.000000317097917; // Equivalent to 10% annual interest
 
         let investmentValue = initialInvestment;
@@ -19,7 +19,7 @@
 
         function updateValue() {
             investmentValue *= (1 + interestRatePerSecond);
-            resultElement.textContent = `Investment value: $${investmentValue.toFixed(2)}`;
+            resultElement.textContent = `Investment value: $${investmentValue.toFixed(6)}`;
         }
 
         // Update the investment value every second
@@ -27,4 +27,3 @@
     </script>
 </body>
 </html>
-
