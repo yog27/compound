@@ -10,15 +10,16 @@
   <script>
     // Function to fetch and update gold price
     function fetchGoldPrice() {
-      fetch('https://www.goldprice.org/jsdata.php')
-        .then(response => response.text())
-        .then(data => {
-          const goldPrice = data.match(/"ask":(\d+\.\d+)/)[1];
-          document.getElementById('gold-price').textContent = `Gold Price: ${goldPrice} USD`;
-        })
-        .catch(error => {
-          console.error('Error fetching data:', error);
-        });
+      const apiUrl = 'https://metals-api.com/api/latest?base=USD&symbols=XAU';
+      const script = document.createElement('script');
+      script.src = `${apiUrl}&callback=updateGoldPrice`;
+      document.body.appendChild(script);
+    }
+
+    // Callback function to update gold price
+    function updateGoldPrice(data) {
+      const goldPrice = data.rates.XAU;
+      document.getElementById('gold-price').textContent = `Gold Price: ${goldPrice} USD`;
     }
 
     // Fetch gold price initially and update every x seconds
